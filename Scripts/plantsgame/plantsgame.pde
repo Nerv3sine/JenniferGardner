@@ -16,7 +16,16 @@ void draw() {
   }
   ellipse(40, 40, 60, 60); //button placeholder
   
-  //tools
+  // placeholders for tool buttons
+  fill(57, 145, 189);
+  rect(400, 40, 60, 60);
+  rect(500, 40, 60, 60);
+  rect(600, 40, 60, 60);
+  
+  //insert images of each of the flowerpot options to be used as buttons, use boundaries for flowerpot selection buttons
+  
+  //tool selection
+  fill(0, 0, 0);
   if (toolSelection == 1) {
     text("Tool 1 Selected", 300, 40);
   }
@@ -36,7 +45,6 @@ void draw() {
   if (flowerpotSelection == 3) {
     text("Flowerpot 3 Selected", 100, 40);
   }
-  //insert images of each of the flowerpot options to be used as buttons, use boundaries in next code block
 }
 
 void mousePressed() {
@@ -55,13 +63,13 @@ void mousePressed() {
     flowerpotSelection = 3;
   }
   // these are made up boundaries for the tool selection (need to be filled with placeholders
-  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+  if (mouseX >= 400 && mouseX <= 460 && mouseY >= 40 && mouseY <= 100) { //boundaries for tool 1 button
     toolSelection = 1;
   }
-  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+  if (mouseX >= 500 && mouseX <= 560 && mouseY >= 40 && mouseY <= 100) { //boundaries for tool 2 button
     toolSelection = 2;
   }
-  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+  if (mouseX >= 600 && mouseX <= 660 && mouseY >= 40 && mouseY <= 100) { //boundaries for tool 3 button
     toolSelection = 3;
   }
   
