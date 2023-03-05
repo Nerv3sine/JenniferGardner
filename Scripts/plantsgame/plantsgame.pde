@@ -12,7 +12,7 @@ void setup() {
   flowerpot2 = loadSprite("flower pot 2.png");
   flowerpot3 = loadSprite("flower pot 3.png");
   
-  coin = loadImage("COIN.png");
+  coin = loadSprite("COIN.png");
   gameFont = createFont("../font/Barlow-Regular.ttf",16,true);
   textFont(gameFont,35);
 }
