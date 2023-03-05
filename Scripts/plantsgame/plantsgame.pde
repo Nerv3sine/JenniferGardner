@@ -1,24 +1,42 @@
-int x =0;
 int flowerpotButton = 1;
 int flowerpotSelection = 1; //defaults to pot 1
-int timer = 0;
+int toolSelection = 1; // defaults to tool 1
 
 void setup() {
   size(1280, 720);
 }
 
 void draw() {
-  //create flowerpot button
+  //create flowerpot on/off button
   if(flowerpotButton == 1) { // if button is on, colour green
     fill(20, 168, 29);  
   }
   else {
     fill(240, 13, 44);  // if button is off colour red
   }
-  ellipse(30, 60, 60, 60); //button placeholder
+  ellipse(40, 40, 60, 60); //button placeholder
   
+  //tools
+  if (toolSelection == 1) {
+    text("Tool 1 Selected", 300, 40);
+  }
+  if (toolSelection == 2) {
+    text("Tool 2 Selected", 300, 40);
+  }
+  if (toolSelection == 3) {
+    text("Tool 3 Selected", 300, 40);
+  }
   //flowerpot options
-  //insert images of each of the flowerpot options to be used as buttons
+  if (flowerpotSelection == 1) {
+    text("Flowerpot 1 Selected", 100, 40);
+  }
+  if (flowerpotSelection == 2) {
+    text("Flowerpot 2 Selected", 100, 40);
+  }
+  if (flowerpotSelection == 3) {
+    text("Flowerpot 3 Selected", 100, 40);
+  }
+  //insert images of each of the flowerpot options to be used as buttons, use boundaries in next code block
 }
 
 void mousePressed() {
@@ -36,6 +54,17 @@ void mousePressed() {
   if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
     flowerpotSelection = 3;
   }
+  // these are made up boundaries for the tool selection (need to be filled with placeholders
+  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+    toolSelection = 1;
+  }
+  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+    toolSelection = 2;
+  }
+  if (mouseX >= 360 && mouseX <= 420 && mouseY >= 360 && mouseY <= 420) { //boundaries for pot 3 button
+    toolSelection = 3;
+  }
+  
 }
 
 void mouseClicked() { 
@@ -53,19 +82,29 @@ void mouseClicked() {
     // choose pot 3
   }
   
+  //tool selection -- when a tool is selected, make it attach to cursor until dropped
+  if (toolSelection == 1){
+    //choose tool 1
+  }
+  if (toolSelection == 2) {
+    // choose tool 2
+  }
+  if (toolSelection == 3) {
+    // choose tool 3
+  }
    if (flowerpotButton == 1) { // if flowerpot button is on, enable pot placement capabilities
     if (mouseY <= shelfHeightHigh) { //place pot on upper shelf
-      //placeholder for pot
+      //placeholder for pot 1
       fill(226, 156, 16);
       rect(mouseX - 50, shelfHeightHigh, 60, 60);
      }
      else if (mouseY > shelfHeightHigh && mouseY <= shelfHeightMiddle) { //place pot on middle shelf
-      //placeholder for pot
+      //placeholder for pot 2
       fill(226, 156, 16);
       rect(mouseX - 50, shelfHeightMiddle, 60, 60);
      }
      else if (mouseY > shelfHeightMiddle) { //place pot on bottom shelf
-      //placeholder for pot
+      //placeholder for pot 3
       fill(226, 156, 16);
       rect(mouseX - 50, shelfHeightLow, 60, 60);
      }
