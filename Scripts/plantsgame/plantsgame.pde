@@ -2,6 +2,7 @@ int x =0;
 PImage flowerpot1, flowerpot2, flowerpot3;
 int potx = 0;
 int poty = 110;
+Pot[] listOfPots = new Pot[24];
 
 void setup() {
   size(1280, 720);
