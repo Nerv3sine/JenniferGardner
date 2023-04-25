@@ -1,15 +1,18 @@
 class Pot {
   PImage potSprite;
   int potSize;
-  float potX;
-  float potY;
+  int potX;
+  int potY;
   Plant plantInPot;
   
-  Pot(PImage potSprite, float x, float y) {
-    
+  Pot(PImage potSprite, int x, int y, int size) {
     this.potSprite = potSprite;
-    potSize = width/6;
+    potSize = size;
     potX = x;
     potY = y;
+  }
+  
+  void run() {
+     image(potSprite, potX, potY, potSize, potSize);
   }
 }
