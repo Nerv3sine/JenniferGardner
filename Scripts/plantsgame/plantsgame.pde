@@ -3,6 +3,7 @@ PFont gameFont;
 int x = 0;
 ArrayList<PImage> potSprites; //0 = empty
 //PImage flowerpot1, flowerpot2, flowerpot3;
+PImage backgroundImg;
 int potx = 0;
 int poty = 110;
 ArrayList<ArrayList<Pot>> listOfPots;
@@ -23,6 +24,7 @@ void setup() {
   coin = loadSprite("COIN.png");
   gameFont = createFont("../font/Barlow-Regular.ttf",16,true);
   textFont(gameFont,35);
+  backgroundImg = loadSprite("background.png");
   
   //scene setup
   listOfPots = new ArrayList<ArrayList<Pot>>();
@@ -52,7 +54,7 @@ void setup() {
 }
 
 void draw() {
-  background(144, 238, 144);
+  background(backgroundImg);
   fill(204,255,204);
   rect(850, 10, 420, 100, 28);
   stroke(204,255,204);
@@ -62,6 +64,7 @@ void draw() {
   text(money,980,70);
   
   fill(0,0,0);
+  stroke(0,0,0,0);
   rect(0, 275, 1280, 15);
   rect(0, 480, 1280, 15);
   rect(0, 690, 1280, 15);
