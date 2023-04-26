@@ -1,7 +1,8 @@
 PImage coin;
 PFont gameFont;
 int x = 0;
-PImage flowerpot1, flowerpot2, flowerpot3;
+ArrayList<PImage> potSprites; //0 = empty
+//PImage flowerpot1, flowerpot2, flowerpot3;
 int potx = 0;
 int poty = 110;
 ArrayList<ArrayList<Pot>> listOfPots;
@@ -9,9 +10,15 @@ int money = 100;
 
 void setup() {
   size(1280, 720);
+  potSprites = new ArrayList<PImage>();
+  potSprites.add(loadSprite("flower pot 3.png"));
+  potSprites.add(loadSprite("flower pot.png"));
+  potSprites.add(loadSprite("flower pot 2.png"));
+  /*
   flowerpot1 = loadSprite("flower pot.png");
   flowerpot2 = loadSprite("flower pot 2.png");
-  flowerpot3 = loadSprite("flower pot 3.png"); //empty flowerpot
+  flowerpot3 = loadSprite("flower pot 3.png");
+  */
   
   coin = loadSprite("COIN.png");
   gameFont = createFont("../font/Barlow-Regular.ttf",16,true);
@@ -33,7 +40,7 @@ void setup() {
     else {
       image(flowerpot3, potx, poty, width/6, width/6);
     }*/
-    listOfPots.get(rowNum).add(new Pot(flowerpot3, potx, poty + rowNum * 205, width/6));
+    listOfPots.get(rowNum).add(new Pot(potSprites.get(0), potx, poty + rowNum * 205, width/6));
     potx += 150;
     if(potx > 1150){
       rowNum++;
@@ -45,6 +52,7 @@ void setup() {
 }
 
 void draw() {
+  background(144, 238, 144);
   fill(204,255,204);
   rect(850, 10, 420, 100, 28);
   stroke(204,255,204);
@@ -58,6 +66,10 @@ void draw() {
   rect(0, 480, 1280, 15);
   rect(0, 690, 1280, 15);
   
+  potManager();
+}
+
+void potManager(){
   for(ArrayList<Pot> row : listOfPots){
     for(Pot pot : row){
       pot.run();
@@ -68,4 +80,17 @@ void draw() {
 PImage loadSprite(String fileName){
   String spriteDirectory = "../../Sprites/";
   return loadImage(spriteDirectory + fileName);
+}
+
+void mouseClicked(){
+  for(ArrayList<Pot> row : listOfPots){
+    for(Pot pot : row){
+      if(pot.isClicked(mouseX, mouseY)){
+        if(money >= 20 && !pot.isPurchased()){
+          pot.purchase(potSprites.get(int(random(potSprites.size() - 1)) + 1));
+          money -= 20;
+        }
+      }
+    }
+  }
 }
