@@ -9,6 +9,11 @@ int poty = 110;
 ArrayList<ArrayList<Pot>> listOfPots;
 int money = 100;
 
+int timer = 0;
+int timerReset = 1000;
+
+int move = 0;
+
 void setup() {
   size(1280, 720);
   potSprites = new ArrayList<PImage>();
@@ -56,6 +61,12 @@ void setup() {
 void draw() {
   background(backgroundImg);
   fill(204,255,204);
+  
+  ellipse(40, 40, 40, 40);
+  ellipse(100, 40, 40, 40);
+  
+  x += move;
+  
   rect(850, 10, 420, 100, 28);
   stroke(204,255,204);
   fill(0);                         
@@ -73,9 +84,16 @@ void draw() {
 }
 
 void potManager(){
+  timer++;
+  if(timer > timerReset){
+    timer = 0;
+  }
   for(ArrayList<Pot> row : listOfPots){
     for(Pot pot : row){
-      pot.run();
+      pot.run(x);
+      if(timer % 900 == 0 && timer > 0){
+        money += pot.getIncome();
+      }
     }
   }
 }
@@ -86,11 +104,25 @@ PImage loadSprite(String fileName){
 }
 
 void mouseClicked(){
+  if(mouseX > 20 && mouseX < 60 && mouseY > 20 && mouseY < 60){
+    if(move == 1){
+      move = 0;
+    }else{
+      move = 1;
+    }
+  }
+  if(mouseX > 80 && mouseX < 120 && mouseY > 20 && mouseY < 60){
+    if(move == -1){
+      move = 0;
+    }else{
+      move = -1;
+    }
+  }
   for(ArrayList<Pot> row : listOfPots){
     for(Pot pot : row){
-      if(pot.isClicked(mouseX, mouseY)){
+      if(pot.isClicked(mouseX, mouseY, x)){
         if(money >= 20 && !pot.isPurchased()){
-          pot.purchase(potSprites.get(int(random(potSprites.size() - 1)) + 1));
+          pot.purchase(potSprites.get(int(random(potSprites.size()))));
           money -= 20;
         }
       }
