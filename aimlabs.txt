@@ -1,0 +1,10 @@
+- 3 yellow squares that start off at a random spot on the screen then teleport to a different spot
+when clicked on.
+- there is a timer at the top of the screen along with the total targets hit and the targets hit p/sec
+- when you first load on the page, you have to click the screen once before the targets apear.
+- when the targets first apear, there is a 1 second grace period where the player can just take in the 
+locations of the targets.
+- the game ends when the player presses "esc" and the screen displays the player's time taken, targets
+hit and targets hit p/sec as well as the hightest targets hit p/sec during the entire test.
+- the timer and targets hit p/sec will update once every sec.
+- the targets hit will update everytime a target is hit.
